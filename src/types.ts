@@ -50,3 +50,11 @@ export interface IWeekDayWeather {
   minTemperature: number;
   date: string;
 }
+
+export type mapModeType =
+  | "wind"
+  | "temp"
+  | "clouds"
+  | "rain"
+  | "pressure"
+  | "radar";

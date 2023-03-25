@@ -83,5 +83,35 @@
     "uk": "м/с",
     "ru": "м/с",
     "en": "m/s"
+  },
+  "windBtn": {
+    "uk": "Вітер",
+    "ru": "Ветер",
+    "en": "Wind"
+  },
+  "tempBtn": {
+    "uk": "Температура",
+    "ru": "Температура",
+    "en": "Temperature"
+  },
+  "cloudsBtn": {
+    "uk": "Хмари",
+    "ru": "Тучи",
+    "en": "Clouds"
+  },
+  "rainBtn": {
+    "uk": "Дощ",
+    "ru": "Дождь",
+    "en": "Rain"
+  },
+  "pressureBtn": {
+    "uk": "Тиск",
+    "ru": "Давление",
+    "en": "Pressure"
+  },
+  "radarBtn": {
+    "uk": "Блискавки",
+    "ru": "Молнии",
+    "en": "Lightnings"
   }
 }

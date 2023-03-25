@@ -1,6 +1,11 @@
 import translations from "@/data/translations.json";
 import { createStore } from "vuex";
-import { languageType, ISelectedSearchResult, IHourWeather } from "../types";
+import {
+  languageType,
+  ISelectedSearchResult,
+  IHourWeather,
+  mapModeType,
+} from "../types";
 
 export default createStore({
   state: {
@@ -19,6 +24,7 @@ export default createStore({
     weekDaysWeather: {} as object,
     timezone: "" as string,
     translations: translations as object,
+    mapMode: "wind" as mapModeType,
   },
   getters: {
     getWeatherForHour: (state) => {
@@ -100,6 +106,9 @@ export default createStore({
     },
     setCurrentWeather(state, value: IHourWeather) {
       state.currentWeather = value;
+    },
+    setMapMode(state, value: mapModeType) {
+      state.mapMode = value;
     },
   },
   actions: {},
