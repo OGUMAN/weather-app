@@ -84,6 +84,11 @@
     "ru": "м/с",
     "en": "m/s"
   },
+  "mapTitle": {
+    "uk": "Карта погоди",
+    "ru": "Карта погоды",
+    "en": "Weather map"
+  },
   "windBtn": {
     "uk": "Вітер",
     "ru": "Ветер",
@@ -113,5 +118,15 @@
     "uk": "Блискавки",
     "ru": "Молнии",
     "en": "Lightnings"
+  },
+  "credits": {
+    "uk": "Кредити",
+    "ru": "Кредити",
+    "en": "Credits"
+  },
+  "creditsText": {
+    "uk": "Хочу висловити свою подяку авторам цих іконок та вказати їх авторство:",
+    "ru": "Хочу выразить свою благодарность авторам этих иконок и указать их авторство:",
+    "en": "I would like to express my gratitude to the authors of these icons and indicate their authorship:"
   }
 }

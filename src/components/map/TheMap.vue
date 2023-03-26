@@ -1,6 +1,6 @@
 <template>
   <div class="map block">
-    <h2 class="map__title title">Карта</h2>
+    <h2 class="title">{{ getTranslation("mapTitle") }}</h2>
     <div class="map__buttons">
       <MapButton :value="'wind'" />
       <MapButton :value="'temp'" />
@@ -34,10 +34,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .map {
-  &__title {
-    margin-bottom: 10px !important;
-  }
-
   &__buttons {
     margin-bottom: 10px;
   }

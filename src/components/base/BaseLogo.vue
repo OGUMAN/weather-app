@@ -1,8 +1,8 @@
 <template>
-  <a class="logo" href="#">
+  <router-link to="/" class="logo" href="#">
     <img class="logo__img" src="@/assets/images/logo.svg" alt="Logo" />
     <div class="logo__text">{{ getTranslation("logoText") }}</div>
-  </a>
+  </router-link>
 </template>
 
 <script lang="ts">

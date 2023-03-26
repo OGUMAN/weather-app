@@ -26,6 +26,7 @@
 import { defineComponent, PropType } from "vue";
 import { ISearchResult } from "@/types";
 import { mapMutations } from "@/store/helpers";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   props: {
@@ -35,6 +36,7 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const router = useRouter();
     const {
       setSelectedSearchResult,
       setIsSearchOpen,
@@ -59,6 +61,7 @@ export default defineComponent({
       setSearchValue("");
       setTimeIsChanged(false);
       setSelectedDayId(0);
+      router.push("/");
     };
 
     return { searchResultClicked };

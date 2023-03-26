@@ -30,10 +30,10 @@ export default defineComponent({
 .header {
   background-color: #ffffff;
   height: 81px;
-  width: 100vw;
   display: flex;
   align-items: center;
   border-bottom: 1px solid #b5b5b5;
+  margin-bottom: 15px;
 
   &__content {
     display: flex;
