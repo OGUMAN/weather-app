@@ -42,6 +42,7 @@ html {
   font-weight: 600;
   font-size: 18px;
   color: #000000;
+  margin-bottom: 10px !important;
 }
 
 .block {
@@ -49,6 +50,7 @@ html {
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   padding: 17.5px 20px;
+  margin-bottom: 15px;
 }
 
 *,
