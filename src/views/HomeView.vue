@@ -2,8 +2,8 @@
   <div class="content">
     <TheWeather />
     <TheMap />
-    <TheFooter />
   </div>
+  <TheFooter />
 </template>
 
 <script lang="ts">

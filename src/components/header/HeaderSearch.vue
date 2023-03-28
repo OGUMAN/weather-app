@@ -11,7 +11,9 @@
       ></div>
       <div class="search__modal block" v-if="isSearchOpen">
         <div class="search__header">
-          <h1 class="title">{{ getTranslation("searchTitle") }}</h1>
+          <h1 class="title title--modal">
+            {{ getTranslation("searchTitle") }}
+          </h1>
           <div class="search__close" @click="closeSearch"></div>
         </div>
         <SearchBox />
@@ -100,6 +102,10 @@ export default defineComponent({
     align-items: center;
     justify-content: space-between;
     margin-bottom: 12px;
+  }
+
+  .title--modal {
+    margin-bottom: 0 !important;
   }
 
   &__close {
