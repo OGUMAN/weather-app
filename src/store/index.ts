@@ -15,7 +15,7 @@ export default createStore({
       name: "Київ", // Kyiv
     } as ISelectedSearchResult,
     isSearchOpen: false as boolean,
-    language: "uk" as languageType,
+    language: "en" as languageType,
     hourly: {} as IHourWeather,
     currentWeather: {} as IHourWeather,
     selectedDayId: 0 as number, // id of the day of week from 0 to 6

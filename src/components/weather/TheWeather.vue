@@ -94,7 +94,7 @@ export default defineComponent({
 
     const loadSearch = (): void => {
       fetch(
-        `https://api.locationiq.com/v1/autocomplete?key=YOUR_API_KEY&q=${selectedSearchResult.value.name}&dedupe=1&accept-language=${language.value}`
+        `https://api.locationiq.com/v1/autocomplete?key=pk.1841a45b6998fdb7ba20642c77457359&q&q=${selectedSearchResult.value.name}&dedupe=1&accept-language=${language.value}`
       )
         .then((res: Response) => res.json())
         .then((data: ISearchResult[]) => {
