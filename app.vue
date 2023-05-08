@@ -1,12 +1,20 @@
 <template>
+  <Title>Weather website</Title>
   <Header />
   <NuxtPage />
 </template>
 
 <script lang="ts" setup>
-useHead({
-  title: "Weather website"
-});
+import { useMainStore } from "./store";
+import { languageType } from "./assets/types";
+
+const store = useMainStore();
+const route = useRoute();
+
+const queryLang = route.query.lang;
+if (queryLang) {
+  store.$patch({ language: route.query.lang as languageType });
+}
 </script>
 
 <style lang="scss">

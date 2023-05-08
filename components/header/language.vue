@@ -28,6 +28,7 @@
 <script lang="ts" setup>
 import { languageType } from "@/assets/types";
 import { useMainStore } from "~/store";
+const router = useRouter();
 const store = useMainStore();
 
 let isListOpen = ref<boolean>(false);
@@ -40,7 +41,8 @@ const closeList = (): void => {
 };
 
 const languageClick = (clickedLanguage: languageType): void => {
-  store.$patch({ language: clickedLanguage })
+  store.$patch({ language: clickedLanguage });
+  router.push({ query: { lang: clickedLanguage } });
   closeList();
 };
 </script>
