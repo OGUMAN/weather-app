@@ -1,0 +1,18 @@
+{
+  "mobile": [
+    { "time": "03:00", "hourId": 3 },
+    { "time": "09:00", "hourId": 9 },
+    { "time": "14:00", "hourId": 14 },
+    { "time": "20:00", "hourId": 20 }
+  ],
+  "desktop": [
+    { "time": "00:00", "hourId": 0 },
+    { "time": "03:00", "hourId": 3 },
+    { "time": "06:00", "hourId": 6 },
+    { "time": "09:00", "hourId": 9 },
+    { "time": "12:00", "hourId": 12 },
+    { "time": "15:00", "hourId": 15 },
+    { "time": "18:00", "hourId": 18 },
+    { "time": "21:00", "hourId": 21 }
+  ]
+}
