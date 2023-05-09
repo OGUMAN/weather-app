@@ -1,4 +1,5 @@
 <template>
+  <Title>{{ store.getTranslation("creditsTitle") }}</Title>
   <div class="content">
     <div class="credits block">
       <h1 class="title">{{ store.getTranslation("credits") }}</h1>
