@@ -53,7 +53,10 @@ const searchResultClicked = (): void => {
   store.$patch({ timeIsChanged: false });
   store.$patch({ selectedDayId: 0 });
 
-  useRouter().push("/");
+  useRouter().push({
+    path: "/",
+    query: useRoute().query,
+  });
 };
 </script>
 

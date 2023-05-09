@@ -2,9 +2,14 @@
   <footer class="footer">
     <div class="footer__content content">
       <BaseLogo />
-      <router-link class="footer__link" to="/credits">{{
-        store.getTranslation("credits")
-      }}</router-link>
+      <NuxtLink
+        class="footer__link"
+        :to="{
+          path: '/credits',
+          query: useRoute().query,
+        }"
+        >{{ store.getTranslation("credits") }}</NuxtLink
+      >
     </div>
   </footer>
 </template>

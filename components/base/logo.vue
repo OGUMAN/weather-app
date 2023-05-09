@@ -1,5 +1,11 @@
 <template>
-  <NuxtLink to="/" class="logo">
+  <NuxtLink
+    class="logo"
+    :to="{
+      path: '/',
+      query: useRoute().query,
+    }"
+  >
     <img class="logo__img" src="@/assets/images/logo.svg" alt="Logo" />
     <div class="logo__text">{{ store.getTranslation("logoText") }}</div>
   </NuxtLink>
@@ -9,7 +15,6 @@
 import { useMainStore } from "~/store/index";
 const store = useMainStore();
 </script>
-
 
 <style lang="scss" scoped>
 .logo {
