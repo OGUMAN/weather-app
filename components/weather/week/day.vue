@@ -155,14 +155,12 @@ watch(
 
   &__title {
     font-weight: 600;
-    font-size: 14px;
     margin-bottom: 4px;
     text-transform: capitalize;
   }
 
   &__day {
     font-weight: 500;
-    font-size: 13px;
     color: #434343;
   }
 

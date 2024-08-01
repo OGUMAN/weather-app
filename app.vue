@@ -1,7 +1,11 @@
 <template>
-  <Title>Weather website</Title>
-  <Header />
-  <NuxtPage />
+  <v-app> 
+    <v-content>
+      <Title>Weather website</Title>
+      <Header />
+      <NuxtPage />
+    </v-content>
+</v-app>
 </template>
 
 <script lang="ts" setup>
@@ -20,6 +24,7 @@ if (queryLang) {
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
 @import "./assets/normalize.css";
+@import "./styles/main.scss";
 
 body,
 html {
@@ -36,7 +41,7 @@ html {
   margin: 0 auto;
   @media screen and (min-width: 858px) {
     & {
-      max-width: 858px;
+      max-width: 1000px;
     }
   }
 }
@@ -48,7 +53,7 @@ html {
 }
 .block {
   background: #ffffff;
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   padding: 17.5px 20px;
   margin-bottom: 15px;

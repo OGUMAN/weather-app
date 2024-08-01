@@ -22,6 +22,9 @@ const store = useMainStore();
 .map {
   &__buttons {
     margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
   }
 }
 </style>

@@ -1,8 +1,6 @@
 <template>
   <div class="search">
-    <button class="search__button" @click="openSearch">
-      <img class="search__img" src="@/assets/images/search.svg" alt="Search" />
-    </button>
+    <v-btn icon="mdi:mdi-magnify" class="search__button" @click="openSearch" />
     <transition-group>
       <div
         class="search__background"
@@ -37,18 +35,6 @@ const closeSearch = (): void => {
 
 <style lang="scss" scoped>
 .search {
-  &__button {
-    background: #ffffff;
-    border: 1px solid #c2c2c2;
-    border-radius: 10px;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-  }
-
   &__img {
     width: 15px;
     height: 15px;

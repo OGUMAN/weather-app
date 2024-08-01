@@ -13,10 +13,14 @@
     "nuxt": "^3.4.2"
   },
   "dependencies": {
+    "@mdi/font": "^7.4.47",
     "@pinia/nuxt": "^0.4.9",
+    "dayjs": "^1.11.12",
     "flag-icons": "^6.6.6",
     "pinia": "^2.0.35",
     "sass": "^1.62.0",
-    "vite-plugin-require": "^1.1.10"
+    "vite-plugin-require": "^1.1.10",
+    "vite-plugin-vuetify": "^2.0.3",
+    "vuetify": "^3.6.14"
   }
 }

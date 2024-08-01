@@ -53,7 +53,6 @@ const hourClicked = (): void => {
   &__description {
     color: #000000;
     font-weight: 400;
-    font-size: 12px;
   }
   @media screen and (min-width: 535px) {
     & {
