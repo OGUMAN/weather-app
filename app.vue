@@ -9,15 +9,14 @@
 </template>
 
 <script lang="ts" setup>
-import { useMainStore } from "./store";
 import type { LangCode } from "./assets/types";
 
-const store = useMainStore();
+const { locale } = useI18n();
 const route = useRoute();
 
 const queryLang = route.query.lang;
 if (queryLang) {
-  store.$patch({ language: route.query.lang as LangCode });
+  locale.value = route.query.lang as LangCode;
 }
 </script>
 

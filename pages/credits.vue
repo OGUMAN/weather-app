@@ -1,10 +1,10 @@
 <template>
-  <Title>{{ $t('CREDITS_TITLE') }}</Title>
+  <Title>{{ $t("CREDITS_TITLE") }}</Title>
   <div class="content">
     <div class="credits block">
-      <h1 class="title">{{ $t('CREDITS_TITLE)') }}</h1>
+      <h1 class="title">{{ $t("CREDITS_TITLE)") }}</h1>
       <div class="credits__text">
-        {{ $t('CREDITS_TEXT') }}
+        {{ $t("CREDITS_TEXT") }}
       </div>
       <a
         class="credits__link"
@@ -22,10 +22,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-import { useMainStore } from '@/store';
-const store = useMainStore();
-</script>
+<script lang="ts" setup></script>
 
 <style lang="scss" scoped>
 .credits {

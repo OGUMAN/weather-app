@@ -1,8 +1,5 @@
 <template>
-  <Title
-    >{{ store.selectedSearchResult.name }}
-    {{ $t('TITLE') }}</Title
-  >
+  <Title>{{ store.selectedSearchResult.name }} {{ $t("TITLE") }}</Title>
   <div class="content">
     <Weather />
     <Map />
@@ -11,6 +8,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useMainStore } from "@/store";
-const store = useMainStore();
+import { useSearchStore } from "~/features/header/search/store";
+
+const store = useSearchStore();
 </script>
