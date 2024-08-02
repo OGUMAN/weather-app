@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 import icons from "@/assets/icons";
-import { IStatus } from "@/assets/types";
+import type { IStatus } from "@/assets/types";
 import { useMainStore } from "@/store/index";
 
 const props = defineProps({
@@ -16,14 +16,14 @@ const props = defineProps({
   },
 });
 
-const store = useMainStore();
+const { locale } = useI18n();
 
 const description = computed(() => {
   const statusObject =
     icons[props.weathercode.toString() as keyof typeof icons].status; // getting .status object with 3 different languages
   return typeof statusObject === "string"
     ? statusObject
-    : statusObject[store.language as keyof IStatus];
+    : statusObject[locale.value as keyof IStatus];
 });
 </script>
 

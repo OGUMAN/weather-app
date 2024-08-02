@@ -27,8 +27,7 @@
 </template>
 
 <script lang="ts" setup>
-import { PropType } from "vue";
-import { ISearchResult } from "@/assets/types";
+import type { ISearchResult } from "@/assets/types";
 import { useMainStore } from "~/store";
 
 const props = defineProps({
@@ -48,7 +47,6 @@ const searchResultClicked = (): void => {
       name: props.searchResult.address.name,
     },
   });
-  store.$patch({ isSearchOpen: false });
   store.$patch({ searchValue: "" });
   store.$patch({ timeIsChanged: false });
   store.$patch({ selectedDayId: 0 });
@@ -57,6 +55,8 @@ const searchResultClicked = (): void => {
     path: "/",
     query: useRoute().query,
   });
+
+  closeModal("search");
 };
 </script>
 

@@ -1,16 +1,21 @@
 <template>
-  <v-btn :variant="store.mapMode===props.value ? 'elevated' : 'outlined'" color="blue" @click="store.$patch({mapMode: props.value})">
-    {{ store.getTranslation(`${props.value}Btn`) }}
+  <v-btn
+    :variant="store.mapMode === props.value ? 'elevated' : 'outlined'"
+    color="blue"
+    @click="store.mapMode = props.value"
+  >
+    <slot />
   </v-btn>
 </template>
 
 <script lang="ts" setup>
-import { useMainStore } from '~/store';
+import type { MapMode } from "~/assets/types";
+import { useMainStore } from "~/store";
 const store = useMainStore();
 
 const props = defineProps({
   value: {
-    type: String,
+    type: String as PropType<MapMode>,
     required: true,
   },
 });

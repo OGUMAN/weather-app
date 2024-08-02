@@ -1,7 +1,7 @@
 <template>
   <Title
     >{{ store.selectedSearchResult.name }}
-    {{ store.getTranslation("title") }}</Title
+    {{ $t('TITLE') }}</Title
   >
   <div class="content">
     <Weather />

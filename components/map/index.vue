@@ -1,21 +1,44 @@
 <template>
   <div class="map block">
-    <h2 class="title">{{ store.getTranslation("mapTitle") }}</h2>
+    <h2 class="title">{{ $t("MAP_TITLE") }}</h2>
     <div class="map__buttons">
-      <MapButton :value="'wind'" />
-      <MapButton :value="'temp'" />
-      <MapButton :value="'clouds'" />
-      <MapButton :value="'rain'" />
-      <MapButton :value="'pressure'" />
-      <MapButton :value="'radar'" />
+      <MapButton v-for="button in buttons" :value="button.key">
+        {{ $t(button.text) }}
+      </MapButton>
     </div>
     <MapWidget />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useMainStore } from "@/store";
-const store = useMainStore();
+import { MapMode } from "~/assets/types";
+
+const buttons = [
+  {
+    key: MapMode.WIND,
+    text: "WIND",
+  },
+  {
+    key: MapMode.TEMPERATURE,
+    text: "TEMPERATURE",
+  },
+  {
+    key: MapMode.RAIN,
+    text: "RAIN",
+  },
+  {
+    key: MapMode.CLOUDS,
+    text: "CLOUDS",
+  },
+  {
+    key: MapMode.PRESSURE,
+    text: "PRESSURE",
+  },
+  {
+    key: MapMode.RADAR,
+    text: "LIGHTNINGS",
+  },
+];
 </script>
 
 <style lang="scss" scoped>

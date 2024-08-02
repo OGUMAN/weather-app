@@ -8,7 +8,7 @@
           path: '/credits',
           query: useRoute().query,
         }"
-        >{{ store.getTranslation("credits") }}</NuxtLink
+        >{{ $t("CREDITS") }}</NuxtLink
       >
     </div>
   </footer>

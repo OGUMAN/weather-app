@@ -1,22 +1,14 @@
 <template>
   <div class="search">
     <v-btn icon="mdi:mdi-magnify" class="search__button" @click="openSearch" />
-    <transition-group>
-      <div
-        class="search__background"
-        @click="closeSearch"
-        v-if="store.isSearchOpen"
-      ></div>
-      <div class="search__modal block" v-if="store.isSearchOpen">
-        <div class="search__header">
-          <h1 class="title title--modal">
-            {{ store.getTranslation("searchTitle") }}
-          </h1>
-          <div class="search__close" @click="closeSearch"></div>
-        </div>
+    <BaseModal name="search">
+      <template #title>
+        {{ $t("SEARCH") }}
+      </template>
+      <template #content>
         <HeaderSearchBox />
-      </div>
-    </transition-group>
+      </template>
+    </BaseModal>
   </div>
 </template>
 
@@ -25,11 +17,7 @@ import { useMainStore } from "@/store";
 const store = useMainStore();
 
 const openSearch = (): void => {
-  store.$patch({ isSearchOpen: true })
-};
-
-const closeSearch = (): void => {
-  store.$patch({ isSearchOpen: false })
+  openModal("search");
 };
 </script>
 
@@ -48,19 +36,6 @@ const closeSearch = (): void => {
     top: 0;
     left: 0;
     z-index: 2;
-  }
-
-  &__modal {
-    max-width: 343px;
-    width: calc(100% - 15px);
-    max-height: 455px;
-    position: absolute;
-    top: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #ffffff;
-    border-radius: 10px;
-    z-index: 3;
   }
 
   &__header {

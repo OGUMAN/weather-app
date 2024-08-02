@@ -2,27 +2,28 @@
   <div class="details">
     <div class="details__item">
       <div class="details__property">
-        {{ store.getTranslation("apparentTemperature") }}
+        {{ $t("APPARENT_TEMPERATURE") }}
       </div>
       <div class="details__connector"></div>
       <div class="details__value">
         <span
-          ><BaseTemperature :value="store.getWeatherForHour.apparentTemperature"
+          ><BaseTemperature
+            :value="store.getWeatherForHour.apparentTemperature"
         /></span>
       </div>
     </div>
     <div class="details__item">
-      <div class="details__property">{{ store.getTranslation("wind") }}</div>
+      <div class="details__property">{{ $t("WIND") }}</div>
       <div class="details__connector"></div>
       <div class="details__value">
         {{ Math.round(store.getWeatherForHour.windSpeed) }}
-        {{ store.getTranslation("metersPerSecond") }},
-        {{ store.getTranslation(store.getWeatherForHour.windDirection) }}
+        {{ $t("METERS_PER_SECOND") }},
+        {{ $t(store.getWeatherForHour.windDirection.toUpperCase()) }}
       </div>
     </div>
     <div class="details__item">
       <div class="details__property">
-        {{ store.getTranslation("precipitation") }}
+        {{ $t("PRECIPITATION") }}
       </div>
       <div class="details__connector"></div>
       <div class="details__value">
@@ -30,7 +31,9 @@
       </div>
     </div>
     <div class="details__item">
-      <div class="details__property">{{ store.getTranslation("humidity") }}</div>
+      <div class="details__property">
+        {{ $t("HUMIDITY") }}
+      </div>
       <div class="details__connector"></div>
       <div class="details__value">{{ store.getWeatherForHour.humidity }}%</div>
     </div>

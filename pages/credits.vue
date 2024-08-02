@@ -1,10 +1,10 @@
 <template>
-  <Title>{{ store.getTranslation("creditsTitle") }}</Title>
+  <Title>{{ $t('CREDITS_TITLE') }}</Title>
   <div class="content">
     <div class="credits block">
-      <h1 class="title">{{ store.getTranslation("credits") }}</h1>
+      <h1 class="title">{{ $t('CREDITS_TITLE)') }}</h1>
       <div class="credits__text">
-        {{ store.getTranslation("creditsText") }}
+        {{ $t('CREDITS_TEXT') }}
       </div>
       <a
         class="credits__link"

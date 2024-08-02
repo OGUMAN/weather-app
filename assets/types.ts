@@ -16,15 +16,13 @@ export interface IResponseError {
   error: string;
 }
 
-export type languageType = "uk" | "en" | "ru";
-
 export interface IStatus {
   uk: string;
   ru: string;
   en: string;
 }
 
-export type weatherIconsKeyType = keyof typeof weatherIcons;
+export type WeatherIconsKeyType = keyof typeof weatherIcons;
 
 export interface IHourWeather {
   time: string[];
@@ -54,20 +52,28 @@ export interface IWeekDaysWeather {
   sunset: string[];
 }
 
-export type windDirectionType =
-  | "N"
-  | "NE"
-  | "E"
-  | "SE"
-  | "S"
-  | "SW"
-  | "W"
-  | "NW";
+export enum WindDirection {
+  N = "N",
+  NE = "NE",
+  E = "E",
+  SE = "SE",
+  S = "S",
+  SW = "SW",
+  W = "W",
+  NW = "NW",
+}
 
-export type mapModeType =
-  | "wind"
-  | "temp"
-  | "clouds"
-  | "rain"
-  | "pressure"
-  | "radar";
+export enum MapMode {
+  WIND = "wind",
+  TEMPERATURE = "temp",
+  CLOUDS = "clouds",
+  RAIN = "rain",
+  PRESSURE = "pressure",
+  RADAR = "radar",
+}
+
+export enum LangCode {
+  RU = "ru",
+  UK = "uk",
+  EN = "en",
+}

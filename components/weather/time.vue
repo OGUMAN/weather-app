@@ -8,6 +8,7 @@
 import { useMainStore } from "@/store";
 const store = useMainStore();
 const datetime = ref();
+const { locale } = useI18n();
 
 const loadTime = (): void => {
   fetch(`https://worldtimeapi.org/api/timezone/${store.timezone}`).then(
@@ -19,7 +20,7 @@ const loadTime = (): void => {
 };
 
 const currentTime = computed(() => {
-  return new Date(datetime.value).toLocaleTimeString(store.language, {
+  return new Date(datetime.value).toLocaleTimeString(locale.value, {
     weekday: "long",
     month: "long",
     day: "numeric",
@@ -32,7 +33,7 @@ const currentTime = computed(() => {
 
 const selectedTime = computed(() => {
   return new Date(store.getWeatherForHour.time).toLocaleTimeString(
-    store.language,
+    locale.value,
     {
       weekday: "long",
       month: "long",

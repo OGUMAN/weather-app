@@ -11,14 +11,18 @@ export default defineNuxtConfig({
       });
     },
     "@pinia/nuxt",
+    "@nuxtjs/i18n",
   ],
+
   css: ["flag-icons/css/flag-icons.min.css"],
+
   pinia: {
     autoImports: [
       "defineStore", // import { defineStore } from 'pinia'
       ["defineStore", "definePiniaStore"], // import { defineStore as definePiniaStore } from 'pinia'
     ],
   },
+
   vite: {
     vue: {
       template: {
@@ -27,7 +31,10 @@ export default defineNuxtConfig({
     },
     plugins: [vitePluginRequire({})],
   },
+
   build: {
-    transpile: ['vuetify'],
+    transpile: ['vuetify', 'vue-final-modal'],
   },
+
+  compatibilityDate: "2024-08-02",
 });

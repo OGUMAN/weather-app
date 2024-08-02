@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
+    "@nuxtjs/i18n": "^8.3.3",
     "@pinia/nuxt": "^0.4.9",
     "dayjs": "^1.11.12",
     "flag-icons": "^6.6.6",
@@ -21,6 +22,6 @@
     "sass": "^1.62.0",
     "vite-plugin-require": "^1.1.10",
     "vite-plugin-vuetify": "^2.0.3",
-    "vuetify": "^3.6.14"
+    "vue-final-modal": "^3.0.0-beta.5"
   }
 }

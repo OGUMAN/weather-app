@@ -2,7 +2,7 @@
   <div class="search-box">
     <input
       type="search"
-      :placeholder="store.getTranslation('searchPlaceholder')"
+      :placeholder="$t('LOCATION_SEARCH_PLACEHOLDER')"
       class="search-box__input search"
       :value="store.searchValue"
       @input="(e) => searchOnInput(e)"
@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ISearchResult, IResponseError } from "@/assets/types";
+import type { ISearchResult, IResponseError } from "@/assets/types";
 
 const searchJSON = ref<ISearchResult[]>([]);
 import { useMainStore } from "@/store";
@@ -46,7 +46,6 @@ const loadSearch = (): void => {
             }
           } else {
             searchJSON.value = data;
-            console.log(data);
           }
         });
     } else if (store.searchValue.length === 0) {
@@ -59,14 +58,12 @@ const searchOnInput = (e: Event): void => {
   store.$patch({ searchValue: (e.target as HTMLInputElement).value });
 };
 
-// onMounted(() => {
-//   loadSearch();
-// });
-
-watch(()=>store.searchValue, () => {
-  loadSearch();
-});
-
+watch(
+  () => store.searchValue,
+  () => {
+    loadSearch();
+  }
+);
 </script>
 
 <style lang="scss" scoped>

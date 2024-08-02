@@ -1,11 +1,10 @@
-import translations from "~/assets/data/translations.json";
-import {
-  languageType,
+import type {
+  LangCode,
   ISelectedSearchResult,
   IHourWeather,
-  mapModeType,
+  MapMode,
   IWeekDaysWeather,
-  windDirectionType,
+  WindDirection,
 } from "@/assets/types";
 
 export const useMainStore = definePiniaStore("main", {
@@ -18,7 +17,7 @@ export const useMainStore = definePiniaStore("main", {
       lon: "30.5234",
     } as ISelectedSearchResult,
     isSearchOpen: false as boolean,
-    language: "en" as languageType,
+    language: "en" as LangCode,
     hourly: {} as IHourWeather,
     currentWeather: {} as IHourWeather,
     selectedDayId: 0 as number, // id of the day of week from 0 to 6
@@ -26,8 +25,7 @@ export const useMainStore = definePiniaStore("main", {
     timeIsChanged: false as boolean,
     weekDaysWeather: {} as IWeekDaysWeather,
     timezone: "" as string,
-    translations: translations as object,
-    mapMode: "wind" as mapModeType,
+    mapMode: "wind" as MapMode,
   }),
 
   getters: {
@@ -60,7 +58,7 @@ export const useMainStore = definePiniaStore("main", {
         temperature: state.hourly.temperature_2m[hourId],
         apparentTemperature: state.hourly.apparent_temperature[hourId],
         windSpeed: state.hourly.windspeed_120m[hourId],
-        windDirection: windDirection as windDirectionType,
+        windDirection: windDirection as WindDirection,
         humidity: state.hourly.relativehumidity_2m[hourId],
         pressure: state.hourly.pressure_msl[hourId],
         precipitationProbability:
@@ -69,9 +67,6 @@ export const useMainStore = definePiniaStore("main", {
     },
     getWeatherCodeForHour: (state) => (hourId: number) => {
       return state.hourly.weathercode[state.selectedDayId * 24 + hourId];
-    },
-    getTranslation: (state: any) => (key: keyof typeof translations) => {
-      return state.translations[key][state.language];
     },
   },
 

@@ -9,11 +9,7 @@
       <div class="weather-day__title">{{ dayInfo.weekday }}</div>
       <div class="weather-day__day">{{ dayInfo.monthday }}</div>
     </div>
-    <BaseIcon
-      class="weather-day__icon"
-      :weathercode="weathercode"
-      :hour="12"
-    />
+    <BaseIcon class="weather-day__icon" :weathercode="weathercode" :hour="12" />
     <div class="weather-day__temperature-range">
       <BaseTemperature :value="maxTemperature" class="weather-day__max" />
       <BaseTemperature :value="minTemperature" class="weather-day__min" />
@@ -23,6 +19,8 @@
 
 <script lang="ts" setup>
 import { useMainStore } from "~/store/index";
+
+const { locale } = useI18n();
 const store = useMainStore();
 const props = defineProps({
   date: {
@@ -47,7 +45,6 @@ const props = defineProps({
   },
 });
 
-console.log(store.selectedDayId)
 const loading = ref<boolean>(false);
 
 const weekdayOptions: Intl.DateTimeFormatOptions = {
@@ -89,22 +86,20 @@ const date = new Date(props.date);
 
 const dayInfo = ref();
 
-const updateDayInfo = (): void => {
-  dayInfo.value = {
-    weekday: date.toLocaleDateString(store.language, weekdayOptions),
-    monthday: date.toLocaleDateString(store.language, monthdayOptions),
-  };
-};
-
 onMounted(() => {
-  updateDayInfo();
   loading.value = true;
 });
 
 watch(
-  () => store.language,
+  () => locale.value,
   () => {
-    updateDayInfo();
+    dayInfo.value = {
+      weekday: date.toLocaleDateString(locale.value, weekdayOptions),
+      monthday: date.toLocaleDateString(locale.value, monthdayOptions),
+    };
+  },
+  {
+    immediate: true,
   }
 );
 </script>

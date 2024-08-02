@@ -1,23 +1,23 @@
 <template>
-  <v-app> 
+  <v-app>
     <v-content>
       <Title>Weather website</Title>
       <Header />
       <NuxtPage />
     </v-content>
-</v-app>
+  </v-app>
 </template>
 
 <script lang="ts" setup>
 import { useMainStore } from "./store";
-import { languageType } from "./assets/types";
+import type { LangCode } from "./assets/types";
 
 const store = useMainStore();
 const route = useRoute();
 
 const queryLang = route.query.lang;
 if (queryLang) {
-  store.$patch({ language: route.query.lang as languageType });
+  store.$patch({ language: route.query.lang as LangCode });
 }
 </script>
 

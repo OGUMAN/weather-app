@@ -3,7 +3,6 @@
 </template>
 
 <script lang="ts" setup>
-import { weatherIconsKeyType } from "@/assets/types";
 import { useMainStore } from "~/store";
 import icons from "@/assets/icons";
 const store = useMainStore();

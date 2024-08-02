@@ -7,7 +7,7 @@
     }"
   >
     <img class="logo__img" src="@/assets/images/logo.svg" alt="Logo" />
-    <div class="logo__text">{{ store.getTranslation("logoText") }}</div>
+    <div class="logo__text">{{ $t("LOGO_TEXT") }}</div>
   </NuxtLink>
 </template>
 
