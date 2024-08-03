@@ -3,7 +3,7 @@
     <v-btn icon="mdi:mdi-magnify" class="search__button" @click="openSearch" />
     <BaseModal name="search">
       <template #title>
-        {{ $t("SEARCH") }}
+        {{ $t("SEARCH_TITLE") }}
       </template>
       <template #content>
         <HeaderSearchBox />

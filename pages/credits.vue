@@ -2,7 +2,7 @@
   <Title>{{ $t("CREDITS_TITLE") }}</Title>
   <div class="content">
     <div class="credits block">
-      <h1 class="title">{{ $t("CREDITS_TITLE)") }}</h1>
+      <h1 class="title">{{ $t("CREDITS_TITLE") }}</h1>
       <div class="credits__text">
         {{ $t("CREDITS_TEXT") }}
       </div>

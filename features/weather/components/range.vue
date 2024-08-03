@@ -13,7 +13,7 @@
       <template #tick-label="{ tick, index }">
         <div class="range__tick">
           <div class="range__tick-line"></div>
-          <div class="range__tick-text">{{ tickLabels[index] }}</div>
+          <div v-if="index % 2 === 0" class="range__tick-text">{{ tickLabels[index] }}</div>
         </div>
       </template>
     </v-slider>
@@ -26,7 +26,7 @@ import { useWeatherStore } from "../store";
 
 const store = useWeatherStore();
 
-const rawTicks = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22];
+const rawTicks = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
 const tickLabels = formatTicks(rawTicks);
 
 function formatTicks(ticks: number[]): string[] {

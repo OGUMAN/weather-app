@@ -47,9 +47,6 @@ export default defineNuxtConfig({
     },
     { path: "~/features/base/components", prefix: "Base" },
   ],
-  app: {
-    baseURL: "/",
-  },
 
   compatibilityDate: "2024-08-02",
 });
