@@ -33,17 +33,23 @@ export default defineNuxtConfig({
   },
 
   build: {
-    transpile: ['vuetify', 'vue-final-modal'],
+    transpile: ["vuetify", "vue-final-modal"],
   },
   components: [
-    { path: '~/features/header/components', prefix: 'Header' },
-    { path: '~/features/header/search/components', prefix: 'HeaderSearch' },
-    { path: '~/features/footer/components', prefix: 'Footer' },
-    { path: '~/features/map/components', prefix: 'Map' },
-    { path: '~/features/weather/components', prefix: 'Weather' },
-    { path: '~/features/weather/schedule/components', prefix: 'WeatherSchedule' },
-    { path: '~/features/base/components', prefix: 'Base' },
+    { path: "~/features/header/components", prefix: "Header" },
+    { path: "~/features/header/search/components", prefix: "HeaderSearch" },
+    { path: "~/features/footer/components", prefix: "Footer" },
+    { path: "~/features/map/components", prefix: "Map" },
+    { path: "~/features/weather/components", prefix: "Weather" },
+    {
+      path: "~/features/weather/schedule/components",
+      prefix: "WeatherSchedule",
+    },
+    { path: "~/features/base/components", prefix: "Base" },
   ],
+  app: {
+    baseURL: "/",
+  },
 
   compatibilityDate: "2024-08-02",
 });
