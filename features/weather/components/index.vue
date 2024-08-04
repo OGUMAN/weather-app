@@ -40,34 +40,39 @@ const searchStore = useSearchStore();
 
 const loading = ref<boolean>(true);
 
-const loadWeather = (): void => {
-  fetch(
-    `https://api.open-meteo.com/v1/forecast?latitude=${searchStore.selectedSearchResult.lat}&longitude=${searchStore.selectedSearchResult.lon}&hourly=temperature_2m,apparent_temperature,precipitation_probability,windspeed_120m,pressure_msl,relativehumidity_2m,weathercode,winddirection_10m&daily=weathercode,sunrise,sunset,temperature_2m_max,temperature_2m_min&current_weather=true&relativehumidity_2m,apparent_temperature&windspeed_unit=ms&timezone=auto`
-  )
-    .then((res: Response) => res.json())
-    .then((data) => {
-      weatherStore.$patch({ weekDaysWeather: data.daily });
-      weatherStore.$patch({ timezone: data.timezone });
-      weatherStore.$patch({
-        selectedHourId: Number(
-          new Date(data.current_weather.time).toLocaleTimeString("uk", {
-            hour: "numeric",
-          })
-        ),
-      });
-      weatherStore.$patch({ currentWeather: data.current_weather.time });
-      weatherStore.$patch({ hourly: data.hourly });
-      loading.value = false;
-    });
+const loadWeather = async (): Promise<void> => {
+  try {
+    const response = await fetch(
+      `https://api.open-meteo.com/v1/forecast?latitude=${searchStore.selectedSearchResult.lat}&longitude=${searchStore.selectedSearchResult.lon}&hourly=temperature_2m,apparent_temperature,precipitation_probability,windspeed_120m,pressure_msl,relativehumidity_2m,weathercode,winddirection_10m&daily=weathercode,sunrise,sunset,temperature_2m_max,temperature_2m_min&current_weather=true&relativehumidity_2m,apparent_temperature&windspeed_unit=ms&timezone=auto`
+    );
+    const data = await response.json();
+
+    weatherStore.weekDaysWeather = data.daily;
+    weatherStore.timezone = data.timezone;
+    weatherStore.selectedHourId = Number(
+      new Date(data.current_weather.time).toLocaleTimeString("uk", {
+        hour: "numeric",
+      })
+    );
+    weatherStore.currentWeather = data.current_weather.time;
+    weatherStore.hourly = data.hourly;
+    loading.value = false;
+  } catch (error) {
+    console.error("Failed to load weather data:", error);
+  }
 };
 
 onMounted(() => {
   loadWeather();
 });
 
-watch(searchStore.selectedSearchResult, () => {
-  loadWeather();
-});
+watch(
+  () => searchStore.selectedSearchResult,
+  () => {
+    loadWeather();
+  }
+);
+
 </script>
 
 <style lang="scss" scoped>

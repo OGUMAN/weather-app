@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     },
     "@pinia/nuxt",
     "@nuxtjs/i18n",
+    "@vueuse/nuxt",
   ],
 
   css: ["flag-icons/css/flag-icons.min.css"],

@@ -13,7 +13,7 @@
     </template>
     <v-list class="header-language__list">
       <v-list-item
-        v-for="(item, index) in Object.values(LangCode)"
+        v-for="(item, index) in $i18n.availableLocales"
         :key="index"
         :value="index"
         @click="onLangChange(item)"
@@ -29,7 +29,6 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
-import { LangCode } from "~/assets/types";
 
 const router = useRouter();
 const { locale } = useI18n();

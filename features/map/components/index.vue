@@ -48,6 +48,7 @@ const buttons = [
     display: flex;
     gap: 10px;
     align-items: center;
+    flex-wrap: wrap;
   }
 }
 </style>
