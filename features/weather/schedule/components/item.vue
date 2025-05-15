@@ -26,8 +26,8 @@ const props = defineProps({
 });
 
 const hourClicked = (): void => {
-  store.$patch({ timeIsChanged: true });
-  store.$patch({ selectedHourId: props.hour.hourId });
+  store.timeIsChanged = true;
+  store.selectedHourId = props.hour.hourId;
 };
 </script>
 

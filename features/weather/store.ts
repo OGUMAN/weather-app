@@ -50,6 +50,27 @@ export const useWeatherStore = definePiniaStore("weatherStore", {
         precipitationProbability: this.hourly.precipitation_probability[hourId],
       };
     },
+    async fetchWeatherData (
+      selectedSearchResult: { lat: number; lon: number },
+    ): Promise<void> {
+      const { lat, lon } = selectedSearchResult;
+    
+      const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,apparent_temperature,precipitation_probability,windspeed_120m,pressure_msl,relativehumidity_2m,weathercode,winddirection_10m&daily=weathercode,sunrise,sunset,temperature_2m_max,temperature_2m_min&current_weather=true&relativehumidity_2m,apparent_temperature&windspeed_unit=ms&timezone=auto`;
+    
+      const response = await fetch(url);
+      const data = await response.json();
+    
+      this.weekDaysWeather = data.daily;
+      this.timezone = data.timezone;
+      this.selectedHourId = Number(
+        new Date(data.current_weather.time).toLocaleTimeString("uk", {
+          hour: "numeric",
+        })
+      );
+      this.currentWeather = data.current_weather.time;
+      this.hourly = data.hourly;
+    },
+    
     getWeatherCodeForHour(hourId: number): number {
       return this.hourly.weathercode[hourId + this.selectedDayId * 24];
     },

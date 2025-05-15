@@ -1,5 +1,5 @@
 <template>
-  <img :src="icon" :alt="'dsfdf'" />
+  <img :src="icon" alt="Weather state icon" />
 </template>
 
 <script lang="ts" setup>
@@ -19,7 +19,6 @@ const props = defineProps({
 });
 
 const iconTime = (): "dayIcon" | "nightIcon" => {
-  console.log("Rerender");
   if (
     props.hour >
       Number(
@@ -46,6 +45,5 @@ const iconTime = (): "dayIcon" | "nightIcon" => {
 
 const icon = computed(() => {
   return icons[props.weathercode.toString() as keyof typeof icons][iconTime()];
-  console.log(props.weathercode);
 });
 </script>

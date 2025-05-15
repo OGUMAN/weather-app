@@ -10,14 +10,42 @@ import { useMapStore } from "~/features/map/store";
 const mapStore = useMapStore();
 const searchStore = useSearchStore();
 
-const iframeSrc = computed(() => {
+const baseUrl = "https://embed.windy.com/embed2.html";
+
+const iframeParams = computed(() => {
   const { lat, lon } = searchStore.selectedSearchResult;
 
-  return `https://embed.windy.com/embed2.html?lat=${lat}&lon=${lon}&detailLat=${lat}&detailLon=${lon}&width=650&height=450&zoom=6&level=surface&overlay=${mapStore.mode}&product=ecmwf&menu=&message=&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=default&metricTemp=default&radarRange=-1&marker=true&metricWind=m%2Fs&metricTemp=%C2%B0C`;
+  if (lat == null || lon == null) return "";
+
+  return new URLSearchParams({
+    lat: lat.toString(),
+    lon: lon.toString(),
+    detailLat: lat.toString(),
+    detailLon: lon.toString(),
+    width: "650",
+    height: "450",
+    zoom: "6",
+    level: "surface",
+    overlay: mapStore.mode,
+    product: "ecmwf",
+    menu: "",
+    message: "",
+    marker: "true",
+    calendar: "now",
+    pressure: "",
+    type: "map",
+    location: "coordinates",
+    detail: "",
+    metricWind: "m/s",
+    metricTemp: "°C",
+    radarRange: "-1",
+  });
 });
+
+const iframeSrc = computed(() => `${baseUrl}?${iframeParams.value.toString()}`);
 </script>
 
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .widget {
   width: 100%;
   height: 450px;

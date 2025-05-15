@@ -1,76 +1,73 @@
 <template>
   <div class="weather" v-if="!loading">
     <WeatherWeek />
+
     <div class="weather__info block">
       <div class="weather__flex">
         <div class="weather__left">
           <h1 class="weather__title title">
-            {{ searchStore.selectedSearchResult.name }}
+            {{ locationName }}
           </h1>
           <WeatherTime />
           <div class="weather__heading">
             <BaseTemperature
               class="weather__temperature"
-              :value="weatherStore.getSelectedHourWeather.temperature"
+              :value="selectedHourWeather.temperature"
             />
             <BaseIcon
-              :hour="weatherStore.selectedHourId"
               class="weather__icon"
-              :weathercode="weatherStore.getSelectedHourWeather.weathercode"
+              :hour="weatherStore.selectedHourId"
+              :weathercode="selectedHourWeather.weathercode"
             />
             <BaseIconDescription
-              :weathercode="weatherStore.getSelectedHourWeather.weathercode"
+              :weathercode="selectedHourWeather.weathercode"
             />
           </div>
           <WeatherDetails />
         </div>
+
         <WeatherSchedule />
       </div>
+
       <WeatherRange />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { ref, computed, watch, onMounted } from "vue";
 import { useSearchStore } from "~/features/header/search/store";
 import { useWeatherStore } from "../store";
 
-const weatherStore = useWeatherStore();
 const searchStore = useSearchStore();
+const weatherStore = useWeatherStore();
+const loading = ref(true);
 
-const loading = ref<boolean>(true);
+const selectedHourWeather = computed(() => weatherStore.getSelectedHourWeather);
+const locationName = computed(() => searchStore.selectedSearchResult.name);
 
-const loadWeather = async (): Promise<void> => {
+const loadWeather = async () => {
   try {
-    const response = await fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${searchStore.selectedSearchResult.lat}&longitude=${searchStore.selectedSearchResult.lon}&hourly=temperature_2m,apparent_temperature,precipitation_probability,windspeed_120m,pressure_msl,relativehumidity_2m,weathercode,winddirection_10m&daily=weathercode,sunrise,sunset,temperature_2m_max,temperature_2m_min&current_weather=true&relativehumidity_2m,apparent_temperature&windspeed_unit=ms&timezone=auto`
-    );
-    const data = await response.json();
+    const { lat, lon } = searchStore.selectedSearchResult;
 
-    weatherStore.weekDaysWeather = data.daily;
-    weatherStore.timezone = data.timezone;
-    weatherStore.selectedHourId = Number(
-      new Date(data.current_weather.time).toLocaleTimeString("uk", {
-        hour: "numeric",
-      })
-    );
-    weatherStore.currentWeather = data.current_weather.time;
-    weatherStore.hourly = data.hourly;
-    loading.value = false;
+    if (lat === undefined || lon === undefined) return false;
+
+    await weatherStore.fetchWeatherData({
+      lat: parseFloat(lat),
+      lon: parseFloat(lon),
+    });
   } catch (error) {
     console.error("Failed to load weather data:", error);
+  } finally {
+    loading.value = false;
   }
 };
 
-onMounted(() => {
-  loadWeather();
-});
+onMounted(loadWeather);
 
 watch(
   () => [searchStore.selectedSearchResult, weatherStore.selectedDayId],
-  () => {
-    loadWeather();
-  }
+  loadWeather
 );
 </script>
 
