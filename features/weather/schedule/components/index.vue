@@ -12,6 +12,9 @@
 
 <script lang="ts" setup>
 import scheduleHours from "~/features/weather/schedule/hours.json";
+import { useWeatherStore } from "../../store";
+
+const store = useWeatherStore();
 
 const screenWidth = ref<number>(window.innerWidth);
 onMounted(() => {

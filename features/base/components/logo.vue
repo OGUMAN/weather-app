@@ -29,6 +29,8 @@
   &__text {
     max-width: 165px;
     width: 100%;
+    font-weight: 800;
+    font-size: 18px;
   }
 }
 </style>

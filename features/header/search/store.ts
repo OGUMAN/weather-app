@@ -1,4 +1,4 @@
-import type { ISelectedSearchResult, WindDirection } from "@/assets/types";
+import type { ISelectedSearchResult } from "@/assets/types";
 
 export const useSearchStore = definePiniaStore("searchStore", {
   state: () => ({

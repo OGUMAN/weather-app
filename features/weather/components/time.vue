@@ -1,68 +1,51 @@
-<template>
-  <div class="date">
-    {{ store.timeIsChanged ? selectedTime : currentTime }}
-  </div>
-</template>
-
 <script lang="ts" setup>
 import { useWeatherStore } from "../store";
+import { DateTime } from "luxon";
+import { computed, onMounted, ref, watch } from "vue";
+import { useI18n } from "vue-i18n";
 
 const store = useWeatherStore();
-const datetime = ref();
 const { locale } = useI18n();
+const datetime = ref(DateTime.now().setZone(store.timezone));
 
-const loadTime = (): void => {
-  fetch(`https://worldtimeapi.org/api/timezone/${store.timezone}`).then(
-    (res: Response) =>
-      res.json().then((data) => {
-        datetime.value = data.datetime;
-      })
-  );
+const updateTime = () => {
+  datetime.value = DateTime.now().setZone(store.timezone);
 };
 
 const currentTime = computed(() => {
-  return new Date(datetime.value).toLocaleTimeString(locale.value, {
+  return datetime.value.setLocale(locale.value).toLocaleString({
     weekday: "long",
     month: "long",
     day: "numeric",
     hour: "numeric",
     minute: "numeric",
     hour12: false,
-    timeZone: store.timezone,
-  } as Intl.DateTimeFormatOptions);
+  });
 });
 
 const selectedTime = computed(() => {
-  return new Date(store.getWeatherForHour.time).toLocaleTimeString(
-    locale.value,
-    {
+  return DateTime.fromISO(store.getWeatherForHour.time)
+    .setLocale(locale.value)
+    .toLocaleString({
       weekday: "long",
       month: "long",
       day: "numeric",
       hour: "numeric",
       minute: "numeric",
       hour12: false,
-    } as Intl.DateTimeFormatOptions
-  );
+    });
 });
 
 onMounted(() => {
-  loadTime();
+  updateTime();
+  // Optionally update every minute
+  setInterval(updateTime, 60000);
 });
 
 watch(
   () => store.timezone,
   () => {
-    loadTime();
+    updateTime();
   }
 );
 </script>
-
-<style lang="scss" scoped>
-.date {
-  margin-bottom: 10px;
-  &::first-letter {
-    text-transform: uppercase;
-  }
-}
-</style>

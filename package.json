@@ -20,6 +20,7 @@
     "@pinia/nuxt": "^0.4.9",
     "dayjs": "^1.11.12",
     "flag-icons": "^6.6.6",
+    "luxon": "^3.6.1",
     "pinia": "^2.0.35",
     "sass": "^1.62.0",
     "vite-plugin-require": "^1.1.10",

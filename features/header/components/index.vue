@@ -1,7 +1,10 @@
 <template>
   <header class="header">
     <div class="header__content content">
-      <BaseLogo />
+      <div class="header__left">
+        <BaseLogo />
+        <HeaderCurrent />
+      </div>
       <div class="header__right">
         <HeaderLanguage />
         <HeaderSearch />
@@ -11,13 +14,19 @@
 </template>
 
 <style lang="scss" scoped>
+@import "../style.scss";
+
 .header {
   background-color: #ffffff;
-  height: 81px;
+  height: $header-height;
   display: flex;
   align-items: center;
+  position: fixed;
   border-bottom: 1px solid #b5b5b5;
   margin-bottom: 15px;
+  top: 0;
+  width: 100%;
+  z-index: 100;
 
   &__content {
     display: flex;
@@ -25,7 +34,7 @@
     align-items: center;
   }
 
-  &__right {
+  &__right, &__left {
     display: flex;
     align-items: center;
     gap: 15px;

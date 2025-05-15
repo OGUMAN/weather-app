@@ -11,15 +11,15 @@
           <div class="weather__heading">
             <BaseTemperature
               class="weather__temperature"
-              :value="weatherStore.getWeatherForHour.temperature"
+              :value="weatherStore.getSelectedHourWeather.temperature"
             />
             <BaseIcon
               :hour="weatherStore.selectedHourId"
               class="weather__icon"
-              :weathercode="weatherStore.getWeatherForHour.weathercode"
+              :weathercode="weatherStore.getSelectedHourWeather.weathercode"
             />
             <BaseIconDescription
-              :weathercode="weatherStore.getWeatherForHour.weathercode"
+              :weathercode="weatherStore.getSelectedHourWeather.weathercode"
             />
           </div>
           <WeatherDetails />
@@ -67,12 +67,11 @@ onMounted(() => {
 });
 
 watch(
-  () => searchStore.selectedSearchResult,
+  () => [searchStore.selectedSearchResult, weatherStore.selectedDayId],
   () => {
     loadWeather();
   }
 );
-
 </script>
 
 <style lang="scss" scoped>
