@@ -114,6 +114,10 @@ watch(
     margin-right: 0;
   }
 
+  &:hover {
+    opacity: 1;
+  }
+
   &:after {
     display: block;
     background-color: #fff;

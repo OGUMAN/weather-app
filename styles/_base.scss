@@ -10,7 +10,7 @@ html {
 }
 
 .content {
-  padding: 0 15px;
+  padding: 15px;
   max-width: 1185px;
   width: 100%;
   margin: 0 auto;
@@ -20,12 +20,14 @@ html {
     }
   }
 }
+
 .title {
   font-weight: 600;
   font-size: 18px;
   color: #000000;
   margin-bottom: 10px !important;
 }
+
 .block {
   background: #ffffff;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
@@ -33,20 +35,24 @@ html {
   padding: 17.5px 20px;
   margin-bottom: 15px;
 }
+
 *,
 *:after,
 *:before {
   box-sizing: border-box;
 }
+
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.1s ease;
   will-change: opacity;
 }
+
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
 }
+
 h1,
 h2,
 h3,
@@ -57,4 +63,12 @@ h6 {
 }
 input:focus {
   outline: none;
+}
+
+.hover-scale {
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(107%);
+  }
 }

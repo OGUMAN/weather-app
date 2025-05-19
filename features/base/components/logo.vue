@@ -1,6 +1,6 @@
 <template>
   <NuxtLink
-    class="logo"
+    class="logo hover-scale"
     :to="{
       path: '/',
       query: useRoute().query,
@@ -21,11 +21,13 @@
   cursor: pointer;
   text-decoration: none;
   color: #000000;
+
   &__img {
     margin-right: 10px;
     width: 40px;
     border-radius: 12.5px;
   }
+
   &__text {
     max-width: 165px;
     width: 100%;

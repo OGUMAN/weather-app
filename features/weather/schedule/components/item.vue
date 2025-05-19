@@ -1,5 +1,5 @@
 <template>
-  <div class="weather-part" @click="hourClicked">
+  <div class="weather-part hover-scale" @click="hourClicked">
     <div class="weather-part__time">{{ props.hour.time }}</div>
     <BaseIcon
       class="weather-part__icon"

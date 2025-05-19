@@ -18,6 +18,7 @@
         :value="index"
         @click="onLangChange(item)"
         class="header-language__list-item"
+        :class="{ 'header-language__list-item--active': item === locale }"
       >
         {{ item.toUpperCase() }}
       </v-list-item>
@@ -78,8 +79,17 @@ const onLangChange = (clickedLanguage: string): void => {
     width: 80px;
 
     &-item {
-      height: 40px !important;
-      min-height: 40px;
+      height: 35px !important;
+      min-height: 35px !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s;
+
+      &--active {
+        background-color: #e0e0e0;
+        font-weight: bold;
+      }
     }
   }
 }

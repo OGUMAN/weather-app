@@ -1,11 +1,12 @@
 <template>
-  <img :src="icon" alt="Weather state icon" />
+  <img ref="iconRef" :src="icon" alt="Weather state icon" />
 </template>
 
 <script lang="ts" setup>
 import icons from "@/assets/icons";
 import { useWeatherStore } from "~/features/weather/store";
 const store = useWeatherStore();
+const iconRef = ref(null);
 
 const props = defineProps({
   weathercode: {

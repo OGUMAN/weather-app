@@ -57,7 +57,7 @@ watch(
     }
 
     &-text {
-      font-size: 13px !important;
+      font-size: 14px !important;
     }
   }
 }

@@ -6,7 +6,8 @@
       <div class="weather__flex">
         <div class="weather__left">
           <h1 class="weather__title title">
-            {{ locationName }}
+            <div>{{ locationName }}</div>
+            <WeatherTemperatureUnit />
           </h1>
           <WeatherTime />
           <div class="weather__heading">
@@ -73,8 +74,6 @@ watch(
 
 <style lang="scss" scoped>
 .weather {
-  padding: 15px 0;
-
   &__left {
     width: 100%;
   }
@@ -87,6 +86,10 @@ watch(
 
   &__title {
     margin-bottom: 5px !important;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   &__temperature {

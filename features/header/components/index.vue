@@ -3,7 +3,7 @@
     <div class="header__content content">
       <div class="header__left">
         <BaseLogo />
-        <HeaderCurrent />
+        <HeaderCurrent class="header__current" />
       </div>
       <div class="header__right">
         <HeaderLanguage />
@@ -34,10 +34,17 @@
     align-items: center;
   }
 
-  &__right, &__left {
+  &__right,
+  &__left {
     display: flex;
     align-items: center;
     gap: 15px;
+  }
+
+  @media screen and (max-width: 550px) {
+    &__current {
+      display: none;
+    }
   }
 }
 </style>
